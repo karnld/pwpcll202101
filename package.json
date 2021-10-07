@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env FIRST_ENV=production node ./dist-server/bin/www",
-    "w:d": "cross-env SECOND_ENV=development babel-watch ./server/bin/www",
+    "start": "cross-env NODE_ENV=production node ./dist-server/bin/www",
+    "w:d": "cross-env NODE_ENV=development babel-watch ./server/bin/www",
     "clean": "rimraf dist-server",
     "b:s": "npm run clean & babel ./server --out-dir dist-server --copy-files",
-    "build": "cross-env FIRST_ENV=production SECOND_ENV=development webpack"
+    "w:s": "cross-env NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
