@@ -1,12 +1,55 @@
+const { appendFileSync } = require('fs');
+const path = require('path');
 module.exports = {
-    //Archivo de entrada
-    entry: './client/index.js', 
-    // Archivo de salida
+    // Modo cofigurador
+    mode: 'development',
+    // Archivo de entrada
+    entry: './client/index.js',
+    // Especificando la salida
     output: {
-        path: '/public', //3 Ruta absoluta de salida
-        filename: 'bundle.js' //4 Nombre del archivo de salida
+        //Salida
+        path: path.join(__dirname, 'public'),
+        //Nombre de salida
+        filename: 'js/bundle.js',
+        // Ruta del path publico para fines del servidor de desarrollo
+        publicPath: '/'
     },
-    devServer : {
-        static: './public'
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                [
+                                    '@babel/preset-env',
+                                    {
+                                        'modules': false,
+                                        'useBuiltIns': 'usage',
+                                        'targets': {"chrome": "80"},
+                                        'corejs': 3
+                                    }
+                                ]
+                            ],
+                            "plugins": [
+                                [
+                                    "module-resolver", 
+                                    {
+                                        "root": ["./"],
+                                        "alias": {
+                                            "@client" : "./client",
+                                            
+                                        }
+                                    }
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }
