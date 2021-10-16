@@ -1,6 +1,9 @@
 const { appendFileSync } = require('fs');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// importando el ESLINT
+const EslintWebpackPlugin = require('eslint-webpack-plugin');
+
 module.exports = {
     // Modo cofigurador
     mode: 'development',
@@ -65,6 +68,7 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({
             filename: 'styles/app.css'
-        })
+        }),
+        new EslintWebpackPlugin()
     ]
 }
