@@ -70,7 +70,7 @@ app.use('/users', usersRouter);
 app.use((req, res, next) => {
   // log
   winston.error(
-    'Code: 404, Message: Page Not Found, URL: ${req.originalUrl}, Method: ${req.method} '
+    `Code: 404, Message: Page Not Found, URL: ${req.originalUrl}, Method: ${req.method} `
   );
   next(createError(404));
 });
@@ -83,7 +83,9 @@ app.use((err, req, res) => {
 
 // Logeando con winston
   winston.error(
-    '${err.status || 500}, Message: ${err.message}, Method: ${req.method}, IP:${req.ip}'
+    `${err.status || 500}, Message: ${err.message}, Method: ${req.method}, IP:${
+      req.ip
+    } `
   );
 
   // render the error page

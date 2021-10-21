@@ -33,7 +33,7 @@ const myFileFormat = combine(
 const options = {
     infoFile: {
         level: 'info',
-        filename: 'server/logs/infos.log',
+        filename: `${appRoot}/server/logs/infos.log`,
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
@@ -42,7 +42,7 @@ const options = {
 
     warnFile: {
         level: 'warn',
-        filename: 'server/logs/warns.log',
+        filename: `${appRoot}/server/logs/warns.log`,
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
@@ -50,7 +50,7 @@ const options = {
     },
   errorFile: {
         level: 'error',
-        filename: 'server/logs/errors.log',
+        filename: `${appRoot}/server/logs/errors.log`,
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
