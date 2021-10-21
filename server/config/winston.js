@@ -19,7 +19,7 @@ winston.addColors(colors);
 const myFormat = combine(
     colorize({ all: true}),
     timestamp(),
-    printf((info) => '${info.timestamp} ${info.level}: ${info.message}')
+  printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
 );
 
 // Formato para la salida de los archivos de log
@@ -33,7 +33,7 @@ const myFileFormat = combine(
 const options = {
     infoFile: {
         level: 'info',
-        filename: '${appRoot}/server/logs/infos.log',
+        filename: 'server/logs/infos.log',
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
@@ -42,15 +42,15 @@ const options = {
 
     warnFile: {
         level: 'warn',
-        filename: '${appRoot}/server/logs/warns.log',
+        filename: 'server/logs/warns.log',
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
         format: myFileFormat,
     },
-    errorFile: {
+  errorFile: {
         level: 'error',
-        filename: '${appRoot}/server/logs/errors.log',
+        filename: 'server/logs/errors.log',
         handleExceptions: true,
         maxsize: 5242880, //5MB
         maxFiles: 5,
