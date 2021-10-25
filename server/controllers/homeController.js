@@ -12,4 +12,5 @@ const greeting = (req, res) => {
 
 export default {
   index,
+  greeting,
 };

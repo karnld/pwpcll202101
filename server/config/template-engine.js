@@ -8,7 +8,7 @@ export default (app) => {
     'hbs',
     ExpHbs({
       extname: '.hbs',
-      defaultLayout: 'main',
+      default: 'main',
     })
   );
 
@@ -16,7 +16,6 @@ export default (app) => {
   app.set('view engine', 'hbs');
   // 3. Estableciendo la ruta de las vistas
   app.set('views', path.join(__dirname, '..', 'views'));
-
   // Retornamos el valor de entrada
   return app;
 };
