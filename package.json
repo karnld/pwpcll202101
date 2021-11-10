@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=production node ./dist-server/bin/www",
-    "w:d": "cross-env NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
+    "dev": "cross-env NODE_ENV=development babel-watch --watch ./server/views ./server/bin/www",
     "w:s": "cross-env NODE_ENV=development webpack serve --config ./webpack.dev.config.js --mode development",
-    "cleans": "rimraf dist-server",
-    "cleanc": "rimraf public/js",
+    "cleans": "cross-env rimraf dist-server",
+    "cleanc": "cross-env rimraf public/js",
     "b:s": "cross-env npm run cleans & babel ./server --out-dir dist-server --copy-files",
     "b:c": "cross-env npm run cleanc & webpack --config ./webpack.config.js --mode production",
     "build": "npm run b:c & npm run b:s"
